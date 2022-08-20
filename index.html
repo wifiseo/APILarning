@@ -8,14 +8,37 @@
 </head>
 <body>
         <h1>I'm now larning API</h1>
-        <ol>
-            <li>
+        <button id="mails" >
+            Click here to see Mails
+        </button>
+        
+        <ul id="user-container" >
 
-            </li>
-        </ol>
+        </ul>
 </body>
 
 <script>
+    fetch('https://jsonplaceholder.typicode.com/users')
+    .then(response => response.json())
+    .then(json => collectUserName(json))
+
+    function collectUserName (array){
+        const ul = document.getElementById("user-container");
+
+
+        for( let i = 0; i < array.length; i++){
+            const element = array[i];
+            const userName = element.email;
+            const li = document.createElement('li');
+            li.innerText = userName;
+            ul.appendChild(li);
+        }
+    }
+
+
+
     
+
+
 </script>
 </html>
